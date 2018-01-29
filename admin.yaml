@@ -1,0 +1,8 @@
+password: 'admin'
+email: 'admin@test.de'
+fullname: 'Test User'
+title: 'Only for testing'
+access:
+  admin:
+    login: true
+    super: true
