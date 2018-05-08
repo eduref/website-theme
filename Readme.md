@@ -25,7 +25,7 @@ Furthermore docker downloads all website content from our [content repository](h
 1. Install [Docker Community Edition](https://docs.docker.com/install/) (Windows users: check the [requirements](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install))
 1. Run from repository root `docker build -t eduref-website .` to build the docker image
 1. Run the image with `docker run -p 80:80 eduref-website` as a container
-2. The website should run at [http://localhost/grav-admin/](http://localhost/grav-admin/)
+2. The website should run at [http://localhost/](http://localhost/)
 
 
 ### Manual
