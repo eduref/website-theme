@@ -37,7 +37,10 @@ WORKDIR /var/www/html/
 #    rm -rf user/pages
 
 # copy custom theme
-# COPY antimatter user/themes/antimatter
+COPY clean-blog user/themes/clean-blog
+
+# copy config and activate theme
+COPY system.yaml user/config
 
 # download content from repository
 # RUN git clone https://github.com/eduref/website-content user/pages

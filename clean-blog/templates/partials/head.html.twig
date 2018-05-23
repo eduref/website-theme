@@ -1,0 +1,62 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% for meta in page.metadata %}
+    {% if meta.name != 'generator' %}
+    <meta {% if meta.name %}name="{{ meta.name }}" {% endif %}{% if meta.http_equiv %}http-equiv="{{ meta.http_equiv }}" {% endif %}{% if meta.charset %}charset="{{ meta.charset }}" {% endif %}{% if meta.property %}property="{{ meta.property }}" {% endif %}{% if meta.content %}content="{{ meta.content }}" {% endif %}/>
+    {% endif %}
+{% endfor %}
+
+{% if theme_config.favicon != '' %}
+<link rel="icon" href="{{ url('theme://img/' ~ theme_config.favicon, true) }}" />
+{% endif %}
+
+{% if header.robots %}
+<meta name="robots" content="{{ header.robots }}">
+{% endif %}
+
+<title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+
+{% block stylesheets %}
+    {% do assets.addCss('theme://vendor/bootstrap/css/bootstrap.min.css') %}
+    {% do assets.addCss('theme://css/clean-blog.min.css') %}
+    {% do assets.addCss('theme://vendor/font-awesome/css/font-awesome.min.css') %}
+    {% do assets.addCss('https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic') %}
+    {% do assets.addCss('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') %}
+
+    {% if browser.getBrowser == 'msie' and browser.getVersion <= 8 %}
+        {% do assets.addCss('theme://css/ie.css') %}
+    {% endif %}
+{% endblock %}
+
+{{ assets.css() }}
+
+{% block javascripts %}
+    {% do assets.addJs('jquery', 101) %}
+    {% do assets.addJs('theme://vendor/bootstrap/js/bootstrap.min.js', 100) %}
+    {% do assets.addJs('theme://js/clean-blog.min.js') %}
+
+    {% if browser.getBrowser == 'msie' and browser.getVersion < 9 %}
+        {% do assets.addJs('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') %}
+        {% do assets.addJs('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js') %}
+    {% endif %}
+{% endblock %}
+
+{# Site URL is not correct if Grav is in subfolder #}
+{% set site_url = base_url_absolute|replace({(base_url): ''}) %}
+
+{% if page.header.header_image %}
+    {% set og_image = site_url ~  page.media.images[page.header.header_image].cache.url() %}
+{% elseif page.media.images|length > 0 %}
+    {% set og_image = site_url ~  page.media.images|first.cache.url() %}
+{% else %}
+    {% set og_image = '' %}
+{% endif %}
+
+<meta property="og:url" content="{{ page.url(true) }}" />
+<meta property="og:title" content="{{ page.title|e('html_attr') }}" />
+<meta property="og:description" content="{{ page.header.metadata.description|e('html_attr') }}" />
+{% if og_image is not empty %}
+<meta property="og:image" content="{{ og_image }}" />
+{% endif %}
