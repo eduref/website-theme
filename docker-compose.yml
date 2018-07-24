@@ -1,0 +1,17 @@
+version: '3'
+services:
+  site:
+    image: evns/grav
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - DOMAIN=eduref.eu    # set to your root/apex domain
+      - GENERATE_CERTS=false   # set to true to automatically setup trusted ssl with let's encrypt
+    volumes:
+      - "./clean-blog:/var/www/grav-admin/user/themes/clean-blog"
+    build:
+      context: .
+      args:
+        GRAV_VERSION: '1.4.7'
