@@ -22,7 +22,7 @@
         {% endblock %}
 
         {% block bottom %}
-            {{ assets.js() }}
+            {% include 'partials/assets.html.twig' %}
         {% endblock %}
     </body>
 </html>
