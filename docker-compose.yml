@@ -11,6 +11,7 @@ services:
       - GENERATE_CERTS=false   # set to true to automatically setup trusted ssl with let's encrypt
     volumes:
       - "./clean-blog:/var/www/grav-admin/user/themes/clean-blog"
+      - "./pages:/var/www/grav-admin/user/pages"
     build:
       context: .
       args:
