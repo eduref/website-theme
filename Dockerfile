@@ -7,7 +7,6 @@ RUN chmod +x bin/gpm && \
     ./bin/gpm update -y
 
 COPY admin.yaml user/accounts/
-
 COPY system.yaml user/config/
 
 RUN chown -R www-data:www-data .
