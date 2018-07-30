@@ -1,0 +1,5 @@
+{% set course = form.value.course %}
+{{ form.value.name }} hat sich zum Kurs <a href="http://localhost/courses/{{ course }}">{{ course }}</a> angemeldet.
+
+{% set email = form.value.email%}
+Email schreiben: <a href="mailto:{{email}}">{{email}}</a>

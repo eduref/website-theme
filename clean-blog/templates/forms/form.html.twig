@@ -39,7 +39,7 @@
         {% do assets.addJs('plugin://form/assets/form.min.js') %}
     {% endif %}
     {% if field.name == 'course' %}
-        <input type="hidden" name="{}" value="{{course}}">
+        <input type="hidden" name="data[course]" value="{{course}}">
     {% else %}
         {% set value = form.value(field.name) %}
         {% include "forms/fields/#{field.type}/#{field.type}.html.twig" ignore missing %}

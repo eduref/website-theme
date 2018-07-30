@@ -30,13 +30,18 @@ form:
           value: Reset
 
     process:
-        # - email:
-        #     from: "{{ config.plugins.email.from }}"
-        #     to:
-        #       - "{{ config.plugins.email.from }}"
-        #       - "{{ form.value.email }}"
-        #     subject: "[Feedback] {{ form.value.name|e }}"
-        #     body: "{% include 'forms/data.html.twig' %}"
+        - email:
+            from: "{{ config.plugins.email.from }}"
+            to:
+              - "{{ form.value.email }}"
+            subject: "EduRef Course Confirmation"
+            body: "{% include 'forms/confirm-participant.html.twig' %}"
+        - email:
+            from: "{{ config.plugins.email.from }}"
+            to:
+              - "{{ config.plugins.email.to }}"
+            subject: "[Course Registration] {{ form.value.name|e }}"
+            body: "{% include 'forms/confirm-self.html.twig' %}"
         - save:
             filename: "{{ form.value.course }}.csv"
             body: "{% include 'forms/data.csv.twig' %}"
