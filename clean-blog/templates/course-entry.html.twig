@@ -4,11 +4,11 @@
 
 {% block header %}
 {% if page.header.header_image %}
-    {% set style = ' style="background-image: url(\'' ~ page.media.images[page.header.header_image].cache.url()  ~ '\')"' %}
+{% set style = ' style="background-image: url(\'' ~ page.media.images[page.header.header_image].cache.url()  ~ '\')"' %}
 {% elseif theme_config.default_header_image %}
-    {% set style = ' style="background-image: url(\'' ~ url('theme://img/' ~ theme_config.default_header_image)  ~ '\')"' %}
+{% set style = ' style="background-image: url(\'' ~ url('theme://img/' ~ theme_config.default_header_image)  ~ '\')"' %}
 {% else %}
-    {% set style = '' %}
+{% set style = '' %}
 {% endif %}
 
 <header class="intro-header"{{ style }}>
@@ -29,14 +29,49 @@
 {% endblock %}
 
 {% block content %}
+
+
 <article>
+    {% if page.header.map %}
+    
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 {{ page.content }}
+                <h2>Location</h2>
+                <br>
+            </div>
+        </div>
+    </div>
+    <iframe src="{{ page.header.map}} " width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    {% endif %}
+    <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 {% if config.plugins.jscomments.enabled %}
-                    {{ jscomments() }}
-                {% endif %}
+                {{ jscomments() }}
+                {% endif %}                
+
+                <h2>Dates</h2>
+                
+                <table class="course-dates">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for date in page.header.dates %}
+                        <tr>
+                            <td>{{date.time | date('d.m.Y')}}</td>
+                            <td>{{date.time | date('H:i')}}</td>
+                            <td>{{date.location}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
                 
                 <h2>Register</h2>
                 {% include 'forms/form.html.twig' with {form: forms('course-registration'), course: page.folder} %}
