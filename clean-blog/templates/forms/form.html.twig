@@ -38,8 +38,12 @@
     {% if field.type == 'file' %}
         {% do assets.addJs('plugin://form/assets/form.min.js') %}
     {% endif %}
-    {% set value = form.value(field.name) %}
-    {% include "forms/fields/#{field.type}/#{field.type}.html.twig" ignore missing %}
+    {% if field.name == 'course' %}
+        <input type="hidden" name="{}" value="{{course}}">
+    {% else %}
+        {% set value = form.value(field.name) %}
+        {% include "forms/fields/#{field.type}/#{field.type}.html.twig" ignore missing %}
+    {% endif %}
   {% endfor %}
 
   {% include "forms/fields/formname/formname.html.twig" %}
@@ -51,6 +55,7 @@
   <div class="row">
     <div class="form-group col-xs-12">
   {% endblock %}
+
 
   {% for button in form.buttons %}
       <button

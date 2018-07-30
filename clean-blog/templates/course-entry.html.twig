@@ -37,6 +37,9 @@
                 {% if config.plugins.jscomments.enabled %}
                     {{ jscomments() }}
                 {% endif %}
+                
+                <h2>Register</h2>
+                {% include 'forms/form.html.twig' with {form: forms('course-registration'), course: page.folder} %}
             </div>
         </div>
     </div>
