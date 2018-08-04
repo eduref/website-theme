@@ -1,5 +1,18 @@
 ---
-title: Java Advanced
+title: 'Java Advanced'
+course:
+    registration_start: '16-07-2018 15:36'
+    registration_end: '31-07-2018 15:36'
+    map: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d367.19487731750047!2d8.409558088524781!3d49.009299223134875!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4de59a21794ee936!2sKarlsruhe+Service+Research+Institute+(KSRI)!5e0!3m2!1sen!2sde!4v1532961299665'
+    sessions:
+        -
+            time: '21-08-2018 18:15'
+            duration: 120
+            location: '4C-02, 05.20'
+        -
+            time: '22-08-2018 15:46'
+            duration: 120
+            location: '4C-02, 05.20'
 ---
 
 # Course Description

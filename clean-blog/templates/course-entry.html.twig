@@ -1,6 +1,8 @@
 {% extends 'partials/base.html.twig' %}
 
 {% set dateformat = admin.page.dateformat ?: config.system.pages.dateformat.short ?: "F d, Y" %}
+{% set course = page.header.course %}
+{% set sessions = course.sessions %}
 
 {% block header %}
 {% if page.header.header_image %}
@@ -20,7 +22,11 @@
                     {% if page.header.subheading %}
                     <h2 class="subheading">{{ page.header.subheading }}</h2>
                     {% endif %}
-                    <span class="meta">{{ 'THEME_CLEAN_BLOG.POST_BY'|t }} {{ page.header.author }} {{ 'THEME_CLEAN_BLOG.POST_ON'|t }} {{ page.date|date(dateformat) }}</span>
+                    {% if sessions is empty %}
+                    <span class="meta">Dates will be announced later</span>
+                    {% else %}
+                    <span class="meta">{{sessions|length}} Sessions from {{sessions|first.time|date(dateformat) }} - {{sessions|last.time|date(dateformat) }}</span>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -30,10 +36,8 @@
 
 {% block content %}
 
-
 <article>
-    {% if page.header.map %}
-    
+    {% if course.map %}
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -43,17 +47,22 @@
             </div>
         </div>
     </div>
-    <iframe src="{{ page.header.map}} " width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <iframe src="{{ course.map}} " width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
     {% endif %}
     <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 {% if config.plugins.jscomments.enabled %}
                 {{ jscomments() }}
                 {% endif %}                
-
+                
                 <h2>Dates</h2>
                 
+                {% if sessions is empty %}
+                <div class="notices yellow">
+                    <p>Dates will be announced later</p>
+                </div>
+                {% else %}
                 <table class="course-dates">
                     <thead>
                         <tr>
@@ -63,18 +72,33 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for date in page.header.dates %}
+                        {% for session in sessions %}
                         <tr>
-                            <td>{{date.time | date('d.m.Y')}}</td>
-                            <td>{{date.time | date('H:i')}}</td>
-                            <td>{{date.location}}</td>
+                            <td>{{session.time|date('d.m.Y')}}</td>
+                            <td>{{session.time|date('H:i')}}</td>
+                            <td>{{session.location}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+                {% endif %}
                 
-                <h2>Register</h2>
+                <h2>Registration</h2>
+                {% if date() > date(course.registration_end) %}
+                <div class="notices red">
+                    <p>Registration period is over</p>
+                </div>
+                {% elseif date() < date(course.registration_start) %}
+                <div class="notices green">
+                    <p>Registration opens {{course.registration_start|date(dateformat)}}</p>
+                </div>
+                {% else %}
+                <div class="notices yellow">
+                    <p>Registration closes {{course.registration_end|date(dateformat)}}</p>
+                </div>
                 {% include 'forms/form.html.twig' with {form: forms('course-registration'), course: page.folder} %}
+                {% endif %}
+                
             </div>
         </div>
     </div>

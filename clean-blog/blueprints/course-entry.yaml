@@ -10,37 +10,71 @@ form:
       fields:
         content:
           fields:
-            header.dates:
-              type: list
-              label: THEME_CLEAN_BLOG.ADMIN.DATES.LABEL
-              help: THEME_CLEAN_BLOG.ADMIN.DATES.HELP
+            header.course:
+              type: fieldset
+              title: Course details
+              help: Help text
+              info: Info text
+              text: Text inside fieldset and before other fields
+              icon: book
+              collapsed: false     # Initial state of fieldset (see collapsible option)
+              collapsible: true    # Whether one can expand the fieldset or not 
               fields:
-                .time:
-                  label: THEME_CLEAN_BLOG.ADMIN.DATES.TIME.LABEL
-                  help: THEME_CLEAN_BLOG.ADMIN.DATES.TIME.HELP
+                header.course.registration_start:
                   type: datetime
-                  validate:
-                    required: true
-                .duration:
-                  label: THEME_CLEAN_BLOG.ADMIN.DATES.DURATION.LABEL
-                  help: THEME_CLEAN_BLOG.ADMIN.DATES.DURATION.HELP
-                  type: number
-                  default: 120
-                  validite:
-                    required: true
-                    type: number
-                .location:
-                  label: THEME_CLEAN_BLOG.ADMIN.DATES.LOCATION.LABEL
-                  help: THEME_CLEAN_BLOG.ADMIN.DATES.LOCATION.HELP
+                  label: Start
+                header.course.registration_end:
+                  type: datetime
+                  label: End
+                header.course.map:
                   type: text
-                  default: '4C-02, 05.20'
+                  label: THEME_CLEAN_BLOG.ADMIN.COURSE.MAP.LABEL
+                  help: THEME_CLEAN_BLOG.ADMIN.COURSE.MAP.HELP
+                  default: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d367.19487731750047!2d8.409558088524781!3d49.009299223134875!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4de59a21794ee936!2sKarlsruhe+Service+Research+Institute+(KSRI)!5e0!3m2!1sen!2sde!4v1532961299665
                   validate:
-                    required: true
-            header.map:
-              type: text
-              label: THEME_CLEAN_BLOG.ADMIN.MAP.LABEL
-              help: THEME_CLEAN_BLOG.ADMIN.MAP.HELP
-              default: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d367.19487731750047!2d8.409558088524781!3d49.009299223134875!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4de59a21794ee936!2sKarlsruhe+Service+Research+Institute+(KSRI)!5e0!3m2!1sen!2sde!4v1532961299665
-              validate:
-                pattern: 'https://www.google.com/maps/embed\S*'
-              
+                    pattern: 'https://www.google.com/maps/embed\S*'
+                header.course.sessions:
+                  type: list
+                  label: THEME_CLEAN_BLOG.ADMIN.COURSE.SESSIONS.LABEL
+                  help: THEME_CLEAN_BLOG.ADMIN.COURSE.SESSIONS.HELP
+                  fields:
+                    .time:
+                      label: THEME_CLEAN_BLOG.ADMIN.COURSE.SESSIONS.TIME.LABEL
+                      help: THEME_CLEAN_BLOG.ADMIN.COURSE.SESSIONS.TIME.HELP
+                      type: datetime
+                      validate:
+                        required: true
+                    .duration:
+                      label: THEME_CLEAN_BLOG.ADMIN.COURSE.SESSIONS.DURATION.LABEL
+                      help: THEME_CLEAN_BLOG.ADMIN.COURSE.SESSIONS.DURATION.HELP
+                      type: number
+                      default: 120
+                      validite:
+                        required: true
+                        type: number
+                    .location:
+                      label: THEME_CLEAN_BLOG.ADMIN.COURSE.SESSIONS.LOCATION.LABEL
+                      help: THEME_CLEAN_BLOG.ADMIN.COURSE.SESSIONS.LOCATION.HELP
+                      type: text
+                      default: '4C-02, 05.20'
+                      validate:
+                        required: true
+            
+            # header.registration_period:
+            #   type: fieldset
+            #   title: Your title
+            #   help: Help text
+            #   info: Info text
+            #   text: Text inside fieldset and before other fields
+            #   icon: comments
+            #   collapsed: true     # Initial state of fieldset (see collapsible option)
+            #   collapsible: true    # Whether one can expand the fieldset or not 
+            #     header.registration_period:
+            #       type: datetime
+            #       label: Registration Start
+            #       help: Defines timestamp when registration formular is open
+            #     header.registration_period:
+            #       type: datetime
+            #       label: Registration End
+            #       help: Defines timestamp when registration formular closes
+                  

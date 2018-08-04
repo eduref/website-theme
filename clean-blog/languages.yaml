@@ -29,22 +29,22 @@ en:
                     URL:
                         LABEL: URL
                         HELP: Social network channel's URL
-            DATES:
-                LABEL: Dates
-                HELP: All dates of the course
-                LOCATION:
-                    LABEL: Location
-                    HELP: Room number of the building
-                DURATION:
-                    LABEL: Duration
-                    HELP: Event duration in minutes
-                TIME:
-                    LABEL: Time
-                    HELP: Start time of event
-            MAP:
-                LABEL: Map Link
-                HELP: Link for an embedded Map form Google Maps
-
+            COURSE:
+                SESSIONS:
+                    LABEL: Session Dates
+                    HELP: Dates have to be declared in the right order
+                    LOCATION:
+                        LABEL: Location
+                        HELP: Room number of the building
+                    DURATION:
+                        LABEL: Duration
+                        HELP: Event duration in minutes
+                    TIME:
+                        LABEL: Time
+                        HELP: Start time of event
+                MAP:
+                    LABEL: Map Link
+                    HELP: Link for an embedded Map form Google Maps
 
         CONTACT:
             NAME: Name
