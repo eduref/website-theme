@@ -1,5 +1,6 @@
 ---
 title: 'Java Advanced'
+subheading: 'Learn Advanced Concepts of the Java Programming Language'
 course:
     registration_open: true
     registration_start: '16-07-2018 15:36'

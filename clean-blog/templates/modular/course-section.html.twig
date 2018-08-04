@@ -1,11 +1,11 @@
-<section class="blog">
+<section class="courses">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h1>{{ page.title }}</h1>
+                <h3 class="h-center">{{ page.title }}</h3>
                 {{ content }}
-                {% for post in page.find('/courses').children.order('date', 'desc').slice(0, 5) %}
-                <h3>{{ post.title }}</h3>
+                {% for page in page.find('/courses').children.order('date', 'desc').slice(0, 5) %}
+                    {% include 'partials/course-preview.html.twig' %}
                 {% endfor %}
             </div>
         </div>

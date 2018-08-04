@@ -214,41 +214,92 @@ hr.small {
     font-size: 30px;
   }
 }
-.post-preview > a {
-  color: #333333;
-}
-.post-preview > a:hover,
-.post-preview > a:focus {
+.preview > a:hover,
+.preview > a:focus {
   text-decoration: none;
-  color: #0085A1;
 }
-.post-preview > a > .post-title {
+.preview > a > title {
   font-size: 30px;
   margin-top: 30px;
   margin-bottom: 10px;
 }
-.post-preview > a > .post-subtitle {
+.preview > a > .subtitle {
   margin: 0;
   font-weight: 300;
   margin-bottom: 10px;
 }
-.post-preview > .post-meta {
-  color: #777777;
+.preview > meta {
   font-size: 18px;
   font-style: italic;
   margin-top: 0;
 }
-.post-preview > .post-meta > a {
+@media only screen and (min-width: 768px) {
+  .preview > a > .post-title {
+    font-size: 36px;
+  }
+}
+.course {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  padding: 30px;
+  margin: 30px 0;
+  background-color: #333333;
+  color: white;
+  position: relative;
+}
+.course > a {
+  color: #fff;
+}
+.course:hover .status {
+  opacity: 1;
+}
+.course .status {
+  display: none;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+}
+.course .status .status-text {
+  color: inherit;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.post > a {
+  color: #333333;
+}
+.post > a:hover,
+.post > a:focus {
+  color: #0085A1;
+}
+.post > meta {
+  color: #777777;
+}
+.post > meta > a {
   text-decoration: none;
   color: #333333;
 }
-.post-preview > .post-meta > a:hover,
-.post-preview > .post-meta > a:focus {
+.post > meta > a:hover,
+.post > meta > a:focus {
   color: #0085A1;
   text-decoration: underline;
 }
 @media only screen and (min-width: 768px) {
-  .post-preview > a > .post-title {
+  .post > a > .post-title {
     font-size: 36px;
   }
 }
@@ -404,4 +455,35 @@ article img {
 table td,
 table th {
   padding: 4px 6px;
+}
+.h-center {
+  text-align: center;
+}
+.course.red {
+  border-left: 10px solid #d9534f;
+}
+.course.green {
+  border-left: 10px solid #5cb85c;
+}
+.course.blue {
+  border-left: 10px solid #5bc0de;
+}
+.course.yellow {
+  border-left: 10px solid #f0ad4e;
+}
+.status.red {
+  background: #fdf7f7;
+  color: #b52b27;
+}
+.status.green {
+  background: #f1f9f1;
+  color: #3d8b3d;
+}
+.status.blue {
+  background: #f4f8fa;
+  color: #28a1c5;
+}
+.status.yellow {
+  background: #fcf8f2;
+  color: #df8a13;
 }

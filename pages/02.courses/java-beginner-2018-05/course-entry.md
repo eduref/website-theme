@@ -1,5 +1,6 @@
 ---
 title: 'Java Beginner'
+subheading: 'Get familiar with the Basis of the Java Programming Language'
 header_image: ai-codes-coding-247791.jpg
 course:
     registration_open: true

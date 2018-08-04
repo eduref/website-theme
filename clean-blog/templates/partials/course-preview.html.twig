@@ -1,0 +1,32 @@
+{% set style = ' style="background-image: url(\'' ~ page.media.images[page.header.header_image].cache.url()  ~ '\')"' %}
+{% set course = page.header.course %}
+
+{% if not course.registration_open %}
+{% set color = 'red' %}
+{% set message = 'Course registration is closed' %}
+{% elseif date() > date(course.registration_end) %}
+{% set color = 'red' %}
+{% set message = 'Course registration period is over' %}
+{% elseif date() < date(course.registration_start) %}
+{% set color = 'yellow' %}
+{% set message = 'Course registration starts %s'|format(course.registration_start|date(dateformat)) %}
+{% else %}
+{% set color = 'green' %}
+{% set message = 'Course registration closes %s'|format(course.registration_end|date(dateformat)) %}
+{% endif %}
+
+<div class="course {{color}} preview" {{style}}>
+    <a href="{{page.url}}">
+        <h2 class="title">{{ page.title }}</h2>
+        {% if page.header.subheading %}
+        <h3 class="subtitle">{{page.header.subheading}}</h3>
+        {% endif %}
+        {% include 'partials/course-subheading.html.twig' with {course: page.header.course}%}
+        <div class="status {{color}}">
+            <div class="status-text">
+                <p>{{message}}</p>
+                <p>Click for further information</p>
+            </div>
+        </div>
+    </a>
+</div>

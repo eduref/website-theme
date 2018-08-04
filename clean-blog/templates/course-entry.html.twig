@@ -22,11 +22,7 @@
                     {% if page.header.subheading %}
                     <h2 class="subheading">{{ page.header.subheading }}</h2>
                     {% endif %}
-                    {% if sessions is empty %}
-                    <span class="meta">Dates will be announced later</span>
-                    {% else %}
-                    <span class="meta">{{sessions|length}} Sessions from {{sessions|first.time|date(dateformat) }} - {{sessions|last.time|date(dateformat) }}</span>
-                    {% endif %}
+                    {% include 'partials/course-subheading.html.twig' %}
                 </div>
             </div>
         </div>
