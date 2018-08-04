@@ -14,12 +14,22 @@ form:
               type: fieldset
               title: Course details
               help: Help text
-              info: Info text
               text: Text inside fieldset and before other fields
               icon: book
               collapsed: false     # Initial state of fieldset (see collapsible option)
               collapsible: true    # Whether one can expand the fieldset or not 
               fields:
+                header.course.registration_open:
+                  type: toggle
+                  label: Course registration
+                  highlight: 1
+                  help: Enables/disables registration formular
+                  default: 1
+                  options:
+                      1: Open
+                      0: Closed
+                  validate:
+                      type: bool
                 header.course.registration_start:
                   type: datetime
                   label: Start

@@ -1,16 +1,32 @@
 ---
 title: 'Java Beginner'
 header_image: ai-codes-coding-247791.jpg
-dates:
-    -
-        time: '30-07-2018 18:44'
-        duration: 120
-        location: '4C-02, 05.20'
-    -
-        time: '21-09-2018 18:39'
-        duration: 120
-        location: '4C-02, 05.20'
-map: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d367.19487731750047!2d8.409558088524781!3d49.009299223134875!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4de59a21794ee936!2sKarlsruhe+Service+Research+Institute+(KSRI)!5e0!3m2!1sen!2sde!4v1532961299665'
+course:
+    registration_open: true
+    registration_start: '01-08-2018 00:00'
+    registration_end: '14-08-2018 16:37'
+    map: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d367.19487731750047!2d8.409558088524781!3d49.009299223134875!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4de59a21794ee936!2sKarlsruhe+Service+Research+Institute+(KSRI)!5e0!3m2!1sen!2sde!4v1532961299665'
+    sessions:
+        -
+            time: '03-09-2018 17:00'
+            duration: 120
+            location: '4C-02, 05.20'
+        -
+            time: '04-09-2018 17:00'
+            duration: 120
+            location: '4C-02, 05.20'
+        -
+            time: '05-09-2018 17:00'
+            duration: 120
+            location: '4C-02, 05.20'
+        -
+            time: '06-09-2018 17:00'
+            duration: 120
+            location: '4C-02, 05.20'
+        -
+            time: '07-09-2018 17:00'
+            duration: 120
+            location: '4C-02, 05.20'
 ---
 
 # Course Description

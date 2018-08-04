@@ -84,7 +84,11 @@
                 {% endif %}
                 
                 <h2>Registration</h2>
-                {% if date() > date(course.registration_end) %}
+                {% if not course.registration_open %}
+                <div class="notices red">
+                    <p>Registration period is closed</p>
+                </div>
+                {% elseif date() > date(course.registration_end) %}
                 <div class="notices red">
                     <p>Registration period is over</p>
                 </div>

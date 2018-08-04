@@ -80,5 +80,6 @@ gulp.task('dev', ['connect', 'less', 'minify-css', 'minify-js'], function() {
     gulp.watch('js/*.js', ['minify-js']);
     // Reloads the browser whenever HTML or JS files change
     gulp.watch('templates/**/*.twig', livereload.reload);
+    gulp.watch('../pages/**/*.md', livereload.reload);
     gulp.watch('js/**/*.js', livereload);
 });
