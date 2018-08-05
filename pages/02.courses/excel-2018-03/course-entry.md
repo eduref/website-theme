@@ -15,6 +15,10 @@ course:
             time: '23-08-2018 22:59'
             duration: 120
             location: '4C-02, 05.20'
+        -
+            time: '30-08-2018 17:17'
+            duration: 120
+            location: '4C-02, 05.20'
 dates:
     -
         time: '19-09-2018 16:00'
