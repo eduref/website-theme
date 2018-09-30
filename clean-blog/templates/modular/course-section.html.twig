@@ -5,7 +5,9 @@
                 <h3 class="h-center">{{ page.title }}</h3>
                 {{ content }}
                 {% for page in page.find('/courses').children.order('date', 'desc').slice(0, 5) %}
-                    {% include 'partials/course-preview.html.twig' %}
+                {% if page.published %}
+                {% include 'partials/course-preview.html.twig' %}
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
