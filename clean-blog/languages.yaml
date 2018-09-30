@@ -53,7 +53,7 @@ en:
             MESSAGE: Message
             SEND: Send
         POST_BY: Posted by
-        POST_ON: on
+        POST_ON: Posted on
         OLDER_POSTS: Older Posts
         NEWER_POSTS: Newer Posts
         MENU: Menu
@@ -93,7 +93,7 @@ de:
             MESSAGE: Nachricht
             SEND: Senden
         POST_BY: von
-        POST_ON: am
+        POST_ON: Veröffentlicht am
         OLDER_POSTS: Ältere Posts
         NEWER_POSTS: Neuere Posts
         MENU: Menü
