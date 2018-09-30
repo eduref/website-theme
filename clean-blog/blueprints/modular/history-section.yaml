@@ -1,0 +1,32 @@
+title: history
+'@extends':
+    type: default
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+          fields:
+            header.history:
+              name: Events
+              type: list
+              style: vertical
+              label: Events
+              fields:
+                .date:
+                  type: text
+                  label: Date
+                .title:
+                  type: text
+                  label: Title
+                .reference:
+                  type: pages
+                  label: Reference
+                  size: medium
+                  show_all: false
+                  show_modular: false
+                  show_root: false
+                  toggleable: true

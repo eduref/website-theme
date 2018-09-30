@@ -5,13 +5,19 @@
             
             {% for event in page.header.history %}
             <div class="event {% if loop.index is odd %}left{%else%}right{% endif %}">
-                <a href="/blog/google-impact-challenge">
+                {% if event.reference %}
+                <a href="{{event.reference}}">
                     <div class="event-details">
                         <h4 class="subtitle">{{event.date}}</h4>
                         <h3>{{event.title}}</h3>
-                        {# {{ page.media[event.image]}} #}
                     </div>
                 </a>
+                {% else %}
+                <div class="event-details">
+                    <h4 class="subtitle">{{event.date}}</h4>
+                    <h3>{{event.title}}</h3>
+                </div>
+                {% endif %}
             </div>
             {% endfor %}
         </div>
