@@ -1,0 +1,28 @@
+title: history
+'@extends':
+    type: default
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+          fields:
+            header.sponsors:
+              name: Sponsors
+              type: list
+              style: vertical
+              label: Sponsors
+              fields:
+                .logo:
+                  type: text
+                  label: Filename of Logo
+                  validate:
+                    required: true
+                .website:
+                  type: text
+                  label: Website url
+                  validate:
+                    required: true
