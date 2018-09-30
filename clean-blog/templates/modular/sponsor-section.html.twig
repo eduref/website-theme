@@ -1,0 +1,15 @@
+<section class="sponsor">
+    <div class="container">
+        {{ page.content }}
+        
+        <div class="logos row">
+            {% for sponsor in page.header.sponsors %}
+            <div class="logo col-xs-4">
+                <a href="{{sponsor.website}}" target="_blank">
+                    {{ page.media[sponsor.logo].cropResize(180, 150) }}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

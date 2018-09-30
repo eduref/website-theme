@@ -1,0 +1,19 @@
+<section class="history">
+    <div class="container relative">
+        {# <h2>Historie im Ueberblick</h2> #}
+        <div class="timeline">
+            
+            {% for event in page.header.history %}
+            <div class="event {% if loop.index is odd %}left{%else%}right{% endif %}">
+                <a href="/blog/google-impact-challenge">
+                    <div class="event-details">
+                        <h4 class="subtitle">{{event.date}}</h4>
+                        <h3>{{event.title}}</h3>
+                        {# {{ page.media[event.image]}} #}
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
