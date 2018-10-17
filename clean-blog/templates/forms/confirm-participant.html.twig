@@ -1,9 +1,9 @@
-<h3>Hallo {{ form.value.name}}</h3>
+<p>Hallo {{ form.value.name}},<p>
 
-<p>Hiermit bestaetigen wir deine Anmeldung zum Kurs {{ form.value.course }}.</p>
+<p>Hiermit bestätigen wir deine Anmeldung zum Kurs {{ form.value.course }}.</p>
 
-<p>Falls du noch fragen hast, schreibe uns doch einfach eine Email: <a href="mailto:{{config.plugins.email.from}}">{{config.plugins.email.from}}</a></p>
+<p>Falls du noch fragen hast, schreibe uns doch einfach eine Email: <a href="mailto:{{config.plugins.email.reply_to}}">{{config.plugins.email.reply_to}}</a></p>
 
 <p>Wir freuen uns auf deinen Besuch!<br>
 Das EduRef Team
-</p>  
+</p>

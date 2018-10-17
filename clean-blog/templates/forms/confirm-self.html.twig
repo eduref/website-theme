@@ -1,5 +1,11 @@
 {% set course = form.value.course %}
-{{ form.value.name }} hat sich zum Kurs <a href="http://localhost/courses/{{ course }}">{{ course }}</a> angemeldet.
+{{ form.value.name }} hat sich zum Kurs <a href="{{ base_url_absolute }}/courses/{{ course }}">{{ course }}</a> angemeldet.
 
 {% set email = form.value.email%}
 Email schreiben: <a href="mailto:{{email}}">{{email}}</a>
+
+<p>Eine Übersicht aller Anmeldungen ist im Uberspace Verzeichnis hinterlegt:</br>  
+    <tt>/home/eduref/html/user/data/course-registration/{{ course }}.csv</tt>
+</p>
+
+<p><b>Bitte die Registrierung schliessen, wenn der Kurs voll ist!</b></p>
