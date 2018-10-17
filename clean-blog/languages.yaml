@@ -58,6 +58,17 @@ en:
         NEWER_POSTS: Newer Posts
         MENU: Menu
         TOGGLE_NAVIGATION: Toggle navigation
+        COURSE:
+            FURTHER_INFORMATION: Click for further information
+            CLOSED: Course registration is closed
+            OVER: Course registration period is over
+            STARTS: Course registration starts %s
+            CLOSES: Course registration closes %s
+            SESSIONS_FROM: sessions from
+            LATER: Dates will be announced later
+    DATEFORMAT:
+        SHORT: 'jS M Y'
+        LONG: 'jS \of F Y'
 de:
     THEME_CLEAN_BLOG:
         ADMIN:
@@ -98,3 +109,14 @@ de:
         NEWER_POSTS: Neuere Posts
         MENU: Menü
         TOGGLE_NAVIGATION: Navigation umschalten
+        COURSE:
+            FURTHER_INFORMATION: Klicken für weitere Informationen
+            CLOSED: Kursregistrierung ist geschlossen
+            OVER: Der Anmeldezeitraum ist vorbei
+            STARTS: Der Anmeldezeitraum beginnt ab %s
+            CLOSES: Die Anmeldungsfrist endet %s
+            SESSIONS_FROM: Sitzungen vom
+            LATER: Termine werden später bekannt gegeben
+    DATEFORMAT:
+        SHORT: 'd. M Y'
+        LONG: 'd. F Y'

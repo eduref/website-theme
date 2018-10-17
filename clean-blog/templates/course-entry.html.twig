@@ -38,7 +38,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 {{ page.content }}
-                <h2>Location</h2>
+                <h2>Anfahrt</h2>
                 <br>
             </div>
         </div>
@@ -52,19 +52,19 @@
                 {{ jscomments() }}
                 {% endif %}                
                 
-                <h2>Dates</h2>
+                <h2>Termine</h2>
                 
                 {% if sessions is empty %}
                 <div class="notices yellow">
-                    <p>Dates will be announced later</p>
+                    <p>Termine werden später bekannt gegeben</p>
                 </div>
                 {% else %}
                 <table class="course-dates">
                     <thead>
                         <tr>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Room</th>
+                            <th>Datum</th>
+                            <th>Uhrzeit</th>
+                            <th>Raum</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -79,22 +79,22 @@
                 </table>
                 {% endif %}
                 
-                <h2>Registration</h2>
+                <h2>Registrierung</h2>
                 {% if not course.registration_open %}
                 <div class="notices red">
-                    <p>Registration period is closed</p>
+                    <p>Registrierung ist geschlossen</p>
                 </div>
                 {% elseif date() > date(course.registration_end) %}
                 <div class="notices red">
-                    <p>Registration period is over</p>
+                    <p>Registrierungszeitraum ist abgelaufen</p>
                 </div>
                 {% elseif date() < date(course.registration_start) %}
                 <div class="notices green">
-                    <p>Registration opens {{course.registration_start|date(dateformat)}}</p>
+                    <p>Registrierung startet {{course.registration_start|date(dateformat)}}</p>
                 </div>
                 {% else %}
                 <div class="notices yellow">
-                    <p>Registration closes {{course.registration_end|date(dateformat)}}</p>
+                    <p>Registrierung endet {{course.registration_end|date(dateformat)}}</p>
                 </div>
                 {% include 'forms/form.html.twig' with {form: forms('course-registration'), course: page.folder} %}
                 {% endif %}

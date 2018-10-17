@@ -1,11 +1,10 @@
-{% set dateformat = admin.page.dateformat ?: config.system.pages.dateformat.short ?: "F d, Y" %}
+{% set dateformat = 'DATEFORMAT.LONG'|t %}
 <div class="preview">
     <a href="{{ post.url }}">
         <h2 class="title">{{ post.title }}</h2>
         {% if post.header.subheading %}
         <h3 class="subtitle">{{ post.header.subheading }}</h3>
         {% endif %}
-
     </a>
     <p class="meta">{{ 'THEME_CLEAN_BLOG.POST_ON'|t }} {{ post.date|date(dateformat) }}</p>
 </div>

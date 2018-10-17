@@ -1,7 +1,7 @@
-{% set dateformat = admin.page.dateformat ?: config.system.pages.dateformat.short ?: "F d, Y" %}
+{% set dateformat = 'DATEFORMAT.SHORT'|t %}
 {% set sessions = course.sessions %}
 {% if sessions is empty %}
 <span class="meta">Dates will be announced later</span>
 {% else %}
-<span class="meta">{{sessions|length}} Sessions from {{sessions|first.time|date(dateformat) }} - {{sessions|last.time|date(dateformat) }}</span>
+<span class="meta">{{sessions|length}} {{'THEME_CLEAN_BLOG.COURSE.SESSIONS_FROM'|t}} {{sessions|first.time|date(dateformat) }} - {{sessions|last.time|date(dateformat) }}</span>
 {% endif %}
