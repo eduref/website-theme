@@ -16,18 +16,20 @@
 {% set message = 'THEME_CLEAN_BLOG.COURSE.CLOSES'|t|format(course.registration_end|date(dateformat)) %}
 {% endif %}
 
-<div class="course {{color}} preview" {{style}}>
-    <a href="{{page.url}}">
-        <h2 class="title">{{ page.title }}</h2>
-        {% if page.header.subheading %}
-        <h3 class="subtitle">{{page.header.subheading}}</h3>
-        {% endif %}
-        {% include 'partials/course-subheading.html.twig' with {course: page.header.course}%}
-        <div class="status {{color}}">
-            <div class="status-text">
-                <p>{{message}}</p>
-                <p>{{'THEME_CLEAN_BLOG.COURSE.FURTHER_INFORMATION'|t}}</p>
+<div class="col-lg-4 col-lg-offset-0 col-md-10 col-md-offset-1">
+    <div class="course {{color}} preview" {{style}}>
+        <a href="{{page.url}}">
+            <h2 class="title">{{ page.title }}</h2>
+            {% if page.header.subheading %}
+            <h3 class="subtitle">{{page.header.subheading}}</h3>
+            {% endif %}
+            {% include 'partials/course-subheading.html.twig' with {course: page.header.course}%}
+            <div class="status {{color}}">
+                <div class="status-text">
+                    <p>{{message}}</p>
+                    <p>{{'THEME_CLEAN_BLOG.COURSE.FURTHER_INFORMATION'|t}}</p>
+                </div>
             </div>
-        </div>
-    </a>
+        </a>
+    </div>
 </div>
