@@ -1,16 +1,106 @@
 {% extends 'partials/base.html.twig' %}
 
-{% block content %}
 {% set dateformat = admin.page.dateformat ?: config.system.pages.dateformat.short ?: "F d, Y" %}
-<div class="container">
-    {{ page.content }}
-    <div class="row">
-        {% for page in page.collection() %}
-        {% include 'partials/course-preview.html.twig' %}
-        {% endfor %}
-        {% if config.plugins.pagination.enabled and collection.params.pagination %}
-        {% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
-        {% endif %}
+{% set course = page.header.course %}
+{% set sessions = course.sessions %}
+
+{% block header %}
+{% if page.header.header_image %}
+{% set style = ' style="background-image: url(\'' ~ page.media.images[page.header.header_image].cache.url()  ~ '\')"' %}
+{% elseif theme_config.default_header_image %}
+{% set style = ' style="background-image: url(\'' ~ url('theme://img/' ~ theme_config.default_header_image)  ~ '\')"' %}
+{% else %}
+{% set style = '' %}
+{% endif %}
+
+<header class="intro-header"{{ style }}>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>{{ page.title }}</h1>
+                    {% if page.header.subheading %}
+                    <h2 class="subheading">{{ page.header.subheading }}</h2>
+                    {% endif %}
+                    {% include 'partials/course-subheading.html.twig' %}
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</header>
+{% endblock %}
+
+{% block content %}
+
+<article>
+    {% if course.map %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {{ page.content }}
+                <h2>Anfahrt</h2>
+                <br>
+            </div>
+        </div>
+    </div>
+    <iframe src="{{ course.map}} " width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% if config.plugins.jscomments.enabled %}
+                {{ jscomments() }}
+                {% endif %}                
+                
+                <h2>Termine</h2>
+                
+                {% if sessions is empty %}
+                <div class="notices yellow">
+                    <p>Termine werden später bekannt gegeben</p>
+                </div>
+                {% else %}
+                <table class="course-dates">
+                    <thead>
+                        <tr>
+                            <th>Datum</th>
+                            <th>Uhrzeit</th>
+                            <th>Raum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for session in sessions %}
+                        <tr>
+                            <td>{{session.time|date('d.m.Y')}}</td>
+                            <td>{{session.time|date('H:i')}}</td>
+                            <td>{{session.location}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+                
+                <h2>Registrierung</h2>
+                {% if not course.registration_open %}
+                <div class="notices red">
+                    <p>Registrierung ist geschlossen</p>
+                </div>
+                {% elseif date() > date(course.registration_end) %}
+                <div class="notices red">
+                    <p>Registrierungszeitraum ist abgelaufen</p>
+                </div>
+                {% elseif date() < date(course.registration_start) %}
+                <div class="notices green">
+                    <p>Registrierung startet {{course.registration_start|date(dateformat)}}</p>
+                </div>
+                {% else %}
+                <div class="notices yellow">
+                    <p>Registrierung endet {{course.registration_end|date(dateformat)}}</p>
+                </div>
+                {% include 'forms/form.html.twig' with {form: forms('course-registration'), course: page.folder} %}
+                {% endif %}
+                
+            </div>
+        </div>
+    </div>
+</article>
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+{% set dateformat = admin.page.dateformat ?: config.system.pages.dateformat.short ?: "F d, Y" %}
+<div class="container">
+    {{ page.content }}
+    <div class="row">
+        {% for page in page.collection() %}
+        {% include 'partials/course-preview.html.twig' %}
+        {% endfor %}
+        {% if config.plugins.pagination.enabled and collection.params.pagination %}
+        {% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
