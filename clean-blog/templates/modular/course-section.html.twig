@@ -1,16 +1,14 @@
 <section class="courses">
     <div class="container">
-        <div class="row">
+        <div
+            class="row">
             {# current course offerings #}
             <h3 class="h-center">{{ page.title }}</h3>
             {# general course description #}
             {{ content }}
             {# preview of all courses #}
-            {% for page in page.find('/courses').children.order('date', 'desc').slice(0, 5) %}
-            {% if page.published %}
-            {% include 'partials/course-preview.html.twig' %}
-            {% endif %}
-            {% endfor %}
+            {{ page.content }}
+            {% include 'partials/course-preview.html.twig' with {'courses': page.find('/courses').children.order('date', 'desc').slice(0, 5) }%}
         </div>
     </div>
 </section>

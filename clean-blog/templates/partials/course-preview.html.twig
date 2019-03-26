@@ -1,38 +1,25 @@
-{% set style = ' style="background-image: url(\'' ~ page.media.images[page.header.header_image].cache.url()  ~ '\')"' %}
-{% set course = page.header.course %}
-{% set dateformat = 'DATEFORMAT.SHORT'|t %}
-
-{% if not course.registration_open %}
-{% set color = 'red' %}
-{% set message = 'THEME_CLEAN_BLOG.COURSE.CLOSED'|t %}
-{% elseif date() > date(course.registration_end) %}
-{% set color = 'red' %}
-{% set message = 'THEME_CLEAN_BLOG.COURSE.OVER'|t %}
-{% elseif date() < date(course.registration_start) %}
-{% set color = 'yellow' %}
-{% set message = 'THEME_CLEAN_BLOG.COURSE.STARTS'|t|format(course.registration_start|date(dateformat)) %}
-{% else %}
-{% set color = 'green' %}
-{% set message = 'THEME_CLEAN_BLOG.COURSE.CLOSES'|t|format(course.registration_end|date(dateformat)) %}
-{% endif %}
-
-<div class="col-lg-4 col-lg-offset-0 col-md-10 col-md-offset-1">
-    <a href="{{page.url}}">
-        <div class=" preview" >
-            <div class="course {{color}} course-title" {{style}}>
-                <h2 class="title">{{ page.title }}</h2>
-                {% if page.header.subheading %}
-            
-            </div>
-            <h3 class="subtitle">{{page.header.subheading}}</h3>
-            {% endif %}
-            {% include 'partials/course-subheading.html.twig' with {course: page.header.course}%}
-            <div class="status {{color}}">
-                <div class="status-text">
-                    <p>{{message}}</p>
-                    <p>{{'THEME_CLEAN_BLOG.COURSE.FURTHER_INFORMATION'|t}}</p>
+<div class="course-overview row">
+    {% for page in courses %}
+        {% set style = ' style="background-image: url(\'' ~ page.media.images[page.header.header_image].cache.url()  ~ '\')"' %}
+        {% set course = page.header.course %}
+        {% set dateformat = 'DATEFORMAT.SHORT'|t %}
+        <div class="col-lg-4 col-lg-offset-0 col-md-10 col-md-offset-1">
+            <a href="{{page.url}}">
+                <div class="course-preview">
+                    <div class="course-header" {{ style}}>
+                        <h1>{{ page.title}}</h1>
+                        {% include 'partials/course-subheading.html.twig' with {course: page.header.course}%}
+                    </div>
+                    <div class="course-summary">
+                        {{ page.header.subheading}}
+                        <hr/>
+                        <div class="btn float-right">More Information</div>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
-    </a>
+    {% endfor %}
+    {# {% if config.plugins.pagination.enabled and collection.params.pagination %}
+                                {% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
+                                {% endif %} #}
 </div>

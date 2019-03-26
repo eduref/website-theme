@@ -214,70 +214,43 @@ hr.small {
     font-size: 30px;
   }
 }
-.preview > a:hover,
-.preview > a:focus {
+.course-overview a:hover,
+.course-overview a:focus {
   text-decoration: none;
 }
-.preview > a > title {
-  font-size: 30px;
-  margin-top: 30px;
-  margin-bottom: 10px;
-}
-.preview > a > .subtitle {
-  margin: 0;
-  font-weight: 300;
-  margin-bottom: 10px;
-}
-.preview > meta {
-  font-size: 18px;
-  font-style: italic;
-  margin-top: 0;
-}
-@media only screen and (min-width: 768px) {
-  .preview > a > .post-title {
-    font-size: 36px;
-  }
-}
-.course {
+.course-header {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  padding: 30px;
-  margin: 30px 0;
+  padding: 60px 30px;
   background-color: #333333;
   color: white;
   position: relative;
 }
-.course > a {
+.course-preview {
+  border: 1px solid #ebebeb;
+  margin: 30px 0;
+  box-shadow: 0 0 36px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s linear, opacity 0.2s linear;
+  transition-property: box-shadow, opacity;
+  transition-duration: 0.2s, 0.2s;
+  transition-timing-function: linear, linear;
+  transition-delay: 0s, 0s;
+}
+.course-preview > a {
   color: #fff;
+  text-decoration: none;
 }
-.course:hover .status {
-  opacity: 1;
+.course-preview > a:hover,
+.course-preview > a:focus {
+  text-decoration: none;
 }
-.course .status {
-  display: none;
-  display: block;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
+.course-preview:hover {
+  box-shadow: 0 0 64px rgba(0, 0, 0, 0.22);
 }
-.course .status .status-text {
-  color: inherit;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 90%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
+.course-summary {
+  padding: 30px;
 }
 .post > a {
   color: #333333;
@@ -465,18 +438,6 @@ table th {
 }
 .h-center {
   text-align: center;
-}
-.course.red {
-  border-left: 10px solid #d9534f;
-}
-.course.green {
-  border-left: 10px solid #5cb85c;
-}
-.course.blue {
-  border-left: 10px solid #5bc0de;
-}
-.course.yellow {
-  border-left: 10px solid #f0ad4e;
 }
 .status.red {
   background: #fdf7f7;

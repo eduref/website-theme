@@ -236,81 +236,49 @@ hr.small {
 }
 
 // Preview of Pages
+.course-overview {
+	a {
+		&:hover,
+		&:focus {
+			text-decoration: none;
+		}	
+	}
+}
 
-.preview {
+.course-header {
+	.background-cover();
+	color: white;
+	padding: 60px 30px;
+	background-color: @gray-dark;
+	color: white;
+	position: relative;
+}
+
+.course-preview {
 	> a {
+		color: #fff;
+		text-decoration: none;
 		&:hover,
 		&:focus {
 			text-decoration: none;
 		}
-		> title {
-			font-size: 30px;
-			margin-top: 30px;
-			margin-bottom: 10px;
-		}
-		> .subtitle {
-			margin: 0;
-			font-weight: 300;
-			margin-bottom: 10px;
-		}
 	}
-	> meta {
-		font-size: 18px;
-		font-style: italic;
-		margin-top: 0;
-	}
-	@media only screen and (min-width: 768px) {
-		> a {
-			> .post-title {
-				font-size: 36px;
-			}
-		}
-	}
-}
-
-// course specific preview
-.course {
-	> a {
-		color: #fff;
-	}
-	.background-cover();
-	padding: 30px;
+	border: 1px solid #ebebeb;
 	margin: 30px 0;
-	background-color: @gray-dark;
-	color: white;
-	position: relative;
-	
-	&:hover .status {
-		opacity: 1;
+	box-shadow: 0 0 36px rgba(0,0,0,0.1);
+	&:hover {
+		box-shadow: 0 0 64px rgba(0,0,0,0.22)
 	}
-	.status {
-		display: none;
-		position: absolute;
-		display: block;
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		height: 100%;
-		width: 100%;
-		opacity: 0;
-		transition: .5s ease;
-		
-		.status-text {
-			color: inherit;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: 90%;
-			-webkit-transform: translate(-50%, -50%);
-			-ms-transform: translate(-50%, -50%);
-			transform: translate(-50%, -50%);
-			text-align: center;
-		}
-	}
+	transition: box-shadow .2s linear,opacity .2s linear;
+	transition-property: box-shadow, opacity;
+	transition-duration: 0.2s, 0.2s;
+	transition-timing-function: linear, linear;
+	transition-delay: 0s, 0s;
 }
 
+.course-summary {
+	padding: 30px;
+}
 
 // post specific preview
 .post {
@@ -556,20 +524,20 @@ table {
 }
 
 // colors
-.course {
-	&.red {
-		border-left: 10px solid @red;
-	}
-	&.green {
-		border-left: 10px solid @green;
-	}
-	&.blue {
-		border-left: 10px solid @blue;
-	}
-	&.yellow {
-		border-left: 10px solid @yellow;
-	}
-}
+// .course {
+// 	&.red {
+// 		border-left: 10px solid @red;
+// 	}
+// 	&.green {
+// 		border-left: 10px solid @green;
+// 	}
+// 	&.blue {
+// 		border-left: 10px solid @blue;
+// 	}
+// 	&.yellow {
+// 		border-left: 10px solid @yellow;
+// 	}
+// }
 
 .status {
 	&.red {
