@@ -41,40 +41,7 @@
                     </ul>
                     {{ page.content }}
                     <h2 id="course-dates">Dates</h2>
-                    <table class="course-dates">
-                        <thead>
-                            <tr>
-                                <th>Starts</th>
-                                <th>Ends</th>
-                                <th>Sessions</th>
-                                <th>Status</th>
-                                <th>More Infos</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for subpage in page.children %}
-                                {% set course = subpage.header.course%}
-                                <a href="{{subpage.url}}"></a>
-                                <tr>
-                                    <td>{{ course.sessions|first.time|date('d.m.Y') }}</td>
-                                    <td>{{ course.sessions|last.time|date('d.m.Y') }}</td>
-                                    <td>{{ course.sessions|length}}</td>
-                                    {% if not course.registration_open %}
-                                        <td>Registration closed</td>
-                                    {% elseif date() > date(course.registration_end) %}
-                                        <td>Registration period over</td>
-                                    {% elseif date() < date(course.registration_start) %}
-                                        <td>Registration starts
-                                            {{course.registration_start|date(dateformat)}}</td>
-                                    {% else %}
-                                        <td>Registration ends
-                                            {{course.registration_end|date(dateformat)}}</td>
-                                    {% endif %}
-                                    <td><a href="{{subpage.url}}">Details</a></td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                    {% include "partials/course-table.html.twig" with {'pages': page.children} %}
                 </div>
             </div>
         </div>

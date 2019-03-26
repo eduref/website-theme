@@ -87,25 +87,7 @@
                     {% include 'forms/form.html.twig' with {form: forms('course-registration'), course: page.folder} %}
                 {% endif %}
                 <h2>Other course dates</h2>
-                <table class="course-dates">
-                    <thead>
-                        <tr>
-                            <th>Starts</th>
-                            <th>Ends</th>
-                            <th>Sessions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for sibling in page.collection({ items: '@self.siblings'})%}
-                            <tr>
-                                {% set sessions = sibling.header.course.sessions %}
-                                <td>{{ sessions|first.time|date('d.m.Y') }}</td>
-                                <td>{{ sessions|last.time|date('d.m.Y') }}</td>
-                                <td>{{ sessions|length}}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                {% include "partials/course-table.html.twig" with {'pages': page.collection({ items: '@self.siblings'})} %}
                 <ul class="pager">
                     <li class="previous">
                         <a href="{{page.parent.url}}">
