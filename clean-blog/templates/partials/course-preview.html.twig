@@ -17,10 +17,13 @@
 {% endif %}
 
 <div class="col-lg-4 col-lg-offset-0 col-md-10 col-md-offset-1">
-    <div class="course {{color}} preview" {{style}}>
-        <a href="{{page.url}}">
-            <h2 class="title">{{ page.title }}</h2>
-            {% if page.header.subheading %}
+    <a href="{{page.url}}">
+        <div class=" preview" >
+            <div class="course {{color}} course-title" {{style}}>
+                <h2 class="title">{{ page.title }}</h2>
+                {% if page.header.subheading %}
+            
+            </div>
             <h3 class="subtitle">{{page.header.subheading}}</h3>
             {% endif %}
             {% include 'partials/course-subheading.html.twig' with {course: page.header.course}%}
@@ -30,6 +33,6 @@
                     <p>{{'THEME_CLEAN_BLOG.COURSE.FURTHER_INFORMATION'|t}}</p>
                 </div>
             </div>
-        </a>
-    </div>
+        </div>
+    </a>
 </div>
