@@ -1,7 +1,7 @@
 /*!
  * Start Bootstrap -  v1.0.0 ()
- * Copyright 2013-2018 Hung Tran
- * Licensed under ISC */
+ * Copyright 2013-2019 
+ * Licensed under  */
 body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 20px;
@@ -455,7 +455,8 @@ img::-moz-selection {
 body {
   -webkit-tap-highlight-color: #0085A1;
 }
-article img {
+article img,
+body video {
   max-width: 100%;
 }
 table td,
