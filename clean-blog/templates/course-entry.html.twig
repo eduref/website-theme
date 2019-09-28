@@ -31,17 +31,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    {% set course_entries = page.collection({ items: '@self.children', 'order': {'by': 'date', 'dir': 'desc'}}) %}
                     <ul class="pager">
                         <li class="previous">
                             <a href="#course-dates">Show Course Dates</a>
                         </li>
                         <li class="next">
-                            <a href="{{ page.children|first.url}}">Register</a>
+                            <a href="{{ course_entries|first.url}}">Register</a>
                         </li>
                     </ul>
                     {{ page.content }}
                     <h2 id="course-dates">Dates</h2>
-                    {% include "partials/course-table.html.twig" with {'pages': page.children} %}
+                    {% include "partials/course-table.html.twig" with {'pages': course_entries } %}
                 </div>
             </div>
         </div>

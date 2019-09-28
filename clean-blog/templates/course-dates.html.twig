@@ -32,8 +32,6 @@
 
 
 <div class="container">
-
-
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             {{ page.content }}
@@ -100,7 +98,7 @@
             {% endif %}
 
             <h2>Other course dates</h2>
-            {% include "partials/course-table.html.twig" with {'pages': page.collection({ items: '@self.siblings'})} %}
+            {% include "partials/course-table.html.twig" with {'pages': page.collection({ items: '@self.siblings', 'order': {'by': 'date', 'dir': 'desc'}})} %}
             <ul class="pager">
                 <li class="previous">
                     <a href="{{page.parent.url}}">
