@@ -5,7 +5,7 @@
         {% set dateformat = 'DATEFORMAT.SHORT'|t %}
         <div class="col-lg-6 col-lg-offset-0 col-md-10 col-md-offset-1">
             <a href="{{page.url}}">
-                <div class="course-preview">
+                <div class="course-preview card-shadow">
                     <div class="course-header" {{ style}}>
                         <h1>{{ page.title}}</h1>
                         {% include 'partials/course-subheading.html.twig' with {course: page.header.course}%}
