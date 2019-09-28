@@ -26,13 +26,13 @@ gulp.task('less', function() {
 });
 
 // Minify compiled CSS
-gulp.task('minify-css', ['less'], function() {
+gulp.task('minify-css', gulp.series('less', function() {
     return gulp.src('css/clean-blog.css')
         .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('css'))
         .pipe(livereload())
-});
+}));
 
 // Minify JS
 gulp.task('minify-js', function() {
@@ -64,22 +64,22 @@ gulp.task('copy', function() {
 })
 
 // Run everything
-gulp.task('default', ['less', 'minify-css', 'minify-js', 'copy']);
+gulp.task('default', gulp.series('less', 'minify-css', 'minify-js'));
 
 // Start server
-gulp.task('connect', function() {
-    livereload.listen({
-        start: true
-    })
-});
+// gulp.task('connect', function() {
+//     livereload.listen({
+//         start: true
+//     })
+// });
 
 // Dev task with livereload
-gulp.task('dev', ['connect', 'less', 'minify-css', 'minify-js'], function() {
-    gulp.watch('less/*.less', ['less']);
-    gulp.watch('css/*.css', ['minify-css']);
-    gulp.watch('js/*.js', ['minify-js']);
+gulp.task('dev', gulp.series('less', 'minify-css', 'minify-js', function() {
+    gulp.watch('less/*.less', gulp.series('less', 'minify-css'));
+    // gulp.watch('css/*.css', gulp.series('minify-css'));
+    gulp.watch('js/*.js', gulp.series('minify-js'));
     // Reloads the browser whenever HTML or JS files change
-    gulp.watch('templates/**/*.twig', livereload.reload);
-    gulp.watch('../pages/**/*.md', livereload.reload);
-    gulp.watch('js/**/*.js', livereload);
-});
+    // gulp.watch('templates/**/*.twig', livereload.reload);
+    // gulp.watch('../pages/**/*.md', livereload.reload);
+    // gulp.watch('js/**/*.js', livereload);
+}));
