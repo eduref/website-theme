@@ -97,8 +97,10 @@
                 allowfullscreen></iframe>
             {% endif %}
 
+            {% set other_courses =  page.collection({ items: '@self.siblings', 'order': {'by': 'date', 'dir': 'desc'}}) %}
+            {% if other_courses|length > 0 %}
             <h2>Other course dates</h2>
-            {% include "partials/course-table.html.twig" with {'pages': page.collection({ items: '@self.siblings', 'order': {'by': 'date', 'dir': 'desc'}})} %}
+            {% include "partials/course-table.html.twig" with {'pages': other_courses} %}
             <ul class="pager">
                 <li class="previous">
                     <a href="{{page.parent.url}}">
@@ -106,6 +108,7 @@
                     </a>
                 </li>
             </ul>
+            {% endif %}
         </div>
     </div>
 </div>
