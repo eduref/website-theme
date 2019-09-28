@@ -1,0 +1,13 @@
+<section class="video">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h3 class="h-center">{{ page.title }}</h3>
+                {{ content }}
+                <video poster="{{ page.media['eduref-introduction-video-thumbnail.jpg'].url }}" controls>
+                    <source src="{{ page.media['eduref-introduction-video.mp4'].url }}" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+</section>
