@@ -3,9 +3,9 @@
         <tr>
             <th>Starts</th>
             <th>Ends</th>
-            <th>Sessions</th>
             <th>Status</th>
-            <th>More Info</th>
+            <th>Sessions</th>
+            <th>Info</th>
         </tr>
     </thead>
     <tbody>
@@ -14,7 +14,6 @@
             <tr>
                 <td>{{ course.sessions|first.time|date('d.m.Y') }}</td>
                 <td>{{ course.sessions|last.time|date('d.m.Y') }}</td>
-                <td>{{ course.sessions|length}}</td>
                 {% if not course.registration_open %}
                     <td>Registration closed</td>
                 {% elseif date() > date(course.registration_end) %}
@@ -26,6 +25,7 @@
                     <td>Registration ends
                         {{course.registration_end|date(dateformat)}}</td>
                 {% endif %}
+                <td>{{ course.sessions|length}}</td>
                 <td>
                     <div class="btn-inverse">
                         <a  href="{{subpage.url}}">Details</a>

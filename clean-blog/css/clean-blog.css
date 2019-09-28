@@ -230,7 +230,7 @@ hr.small {
 }
 .course-preview {
   border: 1px solid #ebebeb;
-  margin: 30px 0;
+  margin: 30px 15px;
   box-shadow: 0 0 36px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s linear, opacity 0.2s linear;
   transition-property: box-shadow, opacity;
