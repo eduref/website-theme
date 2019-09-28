@@ -1,9 +1,9 @@
 {% if page.parent.header.header_image %}
-    {% set style = ' style="background-image: url(\'' ~ page.parent.media.images[page.parent.header.header_image].cache.url()  ~ '\')"' %}
+{% set style = ' style="background-image: url(\'' ~ page.parent.media.images[page.parent.header.header_image].cache.url()  ~ '\')"' %}
 {% elseif theme_config.default_header_image %}
-    {% set style = ' style="background-image: url(\'' ~ url('theme://img/' ~ theme_config.default_header_image)  ~ '\')"' %}
+{% set style = ' style="background-image: url(\'' ~ url('theme://img/' ~ theme_config.default_header_image)  ~ '\')"' %}
 {% else %}
-    {% set style = '' %}
+{% set style = '' %}
 {% endif %}
 {% set dateformat = admin.page.dateformat ?: config.system.pages.dateformat.short ?: "F d, Y" %}
 {% set course = page.header.course %}
@@ -11,91 +11,105 @@
 {% set course_id = page.parent.slug ~ '-' ~ page.slug %}
 {% extends 'partials/base.html.twig' %}
 {% block header %}
-    <header class="intro-header" {{ style }}>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>Registration for
-                            {{ page.parent.title }}</h1>
-                        {# {% if page.header.subheading %} #}
-                        <hr class="small"></hr>
-                        <span class="subheading">{{ page.slug }}</span>
-                        {# {% endif %} #}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-{% endblock %}
-{% block content %}
+<header class="intro-header" {{ style }}>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                {{ page.content }}
-                {% if config.plugins.jscomments.enabled %}
-                    {{ jscomments() }}
-                {% endif %}
-                <h2>Location</h2>
-                {% if course.map %}
-                    <iframe src="{{ course.map}} " width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-                {% endif %}
-                <h2>Dates</h2>
-                {% if sessions is empty %}
-                    <div class="notices yellow">
-                        <p>Termine werden später bekannt gegeben</p>
-                    </div>
-                {% else %}
-                    <table class="course-dates">
-                        <thead>
-                            <tr>
-                                <th>Datum</th>
-                                <th>Uhrzeit</th>
-                                <th>Raum</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for session in sessions %}
-                                <tr>
-                                    <td>{{session.time|date('d.m.Y')}}</td>
-                                    <td>{{session.time|date('H:i')}}</td>
-                                    <td>{{session.location}}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                {% endif %}
-                <h2>Register here</h2>
-                {% if not course.registration_open %}
-                    <div class="notices red">
-                        <p>Registrierung ist geschlossen</p>
-                    </div>
-                {% elseif date() > date(course.registration_end) %}
-                    <div class="notices red">
-                        <p>Registrierungszeitraum ist abgelaufen</p>
-                    </div>
-                {% elseif date() < date(course.registration_start) %}
-                    <div class="notices green">
-                        <p>Registrierung startet
-                            {{course.registration_start|date(dateformat)}}</p>
-                    </div>
-                {% else %}
-                    <div class="notices yellow">
-                        <p>Registrierung endet
-                            {{course.registration_end|date(dateformat)}}</p>
-                    </div>
-                    {% include 'forms/form.html.twig' with {form: forms('course-registration'), course: page.folder} %}
-                {% endif %}
-                <h2>Other course dates</h2>
-                {% include "partials/course-table.html.twig" with {'pages': page.collection({ items: '@self.siblings'})} %}
-                <ul class="pager">
-                    <li class="previous">
-                        <a href="{{page.parent.url}}">
-                            Back to course details
-                        </a>
-                    </li>
-                </ul>
+                <div class="site-heading">
+                    <h1>Registration for {{ page.parent.title }}</h1>
+                    {# {% if page.header.subheading %} #}
+                    <hr class="small">
+                    </hr>
+                    <span class="subheading">{{ page.slug }}</span>
+                    {# {% endif %} #}
+                </div>
             </div>
         </div>
     </div>
+</header>
+{% endblock %}
+{% block content %}
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            {{ page.content }}
+            {% if config.plugins.jscomments.enabled %}
+            {{ jscomments() }}
+            {% endif %}
+
+            {# course registration #}
+            <h2>Register here</h2>
+            {% if not course.registration_open %}
+            <div class="notices red">
+                <p>Registrierung ist geschlossen</p>
+            </div>
+            {% elseif date() > date(course.registration_end) %}
+            <div class="notices red">
+                <p>Registrierungszeitraum ist abgelaufen</p>
+            </div>
+            {% elseif date() < date(course.registration_start) %}
+            <div class="notices green">
+                <p>Registrierung startet
+                    {{course.registration_start|date(dateformat)}}</p>
+            </div>
+            {% else %}
+            <div class="notices yellow">
+                <p>Registrierung endet
+                    {{course.registration_end|date(dateformat)}}</p>
+            </div>
+            {% include 'forms/form.html.twig' with {form: forms('course-registration'), course: page.folder} %}
+            {% endif %}
+
+            {# course dates #}
+            <h2>Dates</h2>
+            {% if sessions is empty %}
+            <div class="notices yellow">
+                <p>Termine werden später bekannt gegeben</p>
+            </div>
+            {% else %}
+            <table class="course-dates">
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Uhrzeit</th>
+                        <th>Raum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for session in sessions %}
+                    <tr>
+                        <td>{{session.time|date('d.m.Y')}}</td>
+                        <td>{{session.time|date('H:i')}}</td>
+                        <td>{{session.location}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {% endif %}
+
+            {# course location #}
+            <h2>Location</h2>
+            {% if course.map %}
+            <iframe src="{{ course.map}} " width="100%" height="300" frameborder="0" style="border:0"
+                allowfullscreen></iframe>
+            {% endif %}
+
+            <h2>Other course dates</h2>
+            {% include "partials/course-table.html.twig" with {'pages': page.collection({ items: '@self.siblings'})} %}
+            <ul class="pager">
+                <li class="previous">
+                    <a href="{{page.parent.url}}">
+                        Back to course details
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
