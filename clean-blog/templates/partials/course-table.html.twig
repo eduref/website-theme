@@ -14,10 +14,10 @@
             <tr>
                 <td>{{ course.sessions|first.time|date('d.m.Y') }}</td>
                 <td>{{ course.sessions|last.time|date('d.m.Y') }}</td>
-                {% if not course.registration_open %}
+                {% if date() > date(course.registration_end) %}
+                    <td>Registration expired</td>
+                {% elseif not course.registration_open %}
                     <td>Registration closed</td>
-                {% elseif date() > date(course.registration_end) %}
-                    <td>Registration period over</td>
                 {% elseif date() < date(course.registration_start) %}
                     <td>Registration starts
                         {{course.registration_start|date(dateformat)}}</td>
