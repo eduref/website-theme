@@ -42,7 +42,11 @@
                     </ul>
                     {{ page.content }}
                     <h2 id="course-dates">Dates</h2>
-                    {% include "partials/course-table.html.twig" with {'pages': course_entries } %}
+                    {% if course_entries is empty %}
+                        <p>Dates will be announced later</p>
+                    {% else %}
+                        {% include "partials/course-table.html.twig" with {'pages': course_entries } %}
+                    {% endif %}
                 </div>
             </div>
         </div>
