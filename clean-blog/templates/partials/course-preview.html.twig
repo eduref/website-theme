@@ -3,6 +3,12 @@
         {% set style = ' style="background-image: url(\'' ~ page.media.images[page.header.header_image].cropZoom(768, 384).url()  ~ '\')"' %}
         {% set course = page.header.course %}
         {% set dateformat = 'DATEFORMAT.SHORT'|t %}
+
+        {# clear every second column for two column layout #}
+        {% if loop.index is odd %}
+        <div class="clearfix visible-lg-block"></div>
+        {% endif %}
+
         <div class="col-lg-6 col-lg-offset-0 col-md-10 col-md-offset-1">
             <a href="{{page.url}}">
                 <div class="course-preview card-shadow">
