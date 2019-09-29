@@ -1,6 +1,6 @@
 <div class="course-overview row">
     {% for page in courses %}
-        {% set style = ' style="background-image: url(\'' ~ page.media.images[page.header.header_image].cache.url()  ~ '\')"' %}
+        {% set style = ' style="background-image: url(\'' ~ page.media.images[page.header.header_image].cropZoom(768, 384).url()  ~ '\')"' %}
         {% set course = page.header.course %}
         {% set dateformat = 'DATEFORMAT.SHORT'|t %}
         <div class="col-lg-6 col-lg-offset-0 col-md-10 col-md-offset-1">
