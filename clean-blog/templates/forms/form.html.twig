@@ -38,6 +38,7 @@
     {% if field.type == 'file' %}
         {% do assets.addJs('plugin://form/assets/form.min.js') %}
     {% endif %}
+    {# add hidden field with course name #}
     {% if field.name == 'course' %}
         <input type="hidden" name="data[course]" value="{{course}}">
     {% else %}

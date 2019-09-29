@@ -59,9 +59,9 @@
                 <p>Registrierung endet
                     {{course.registration_end|date(dateformat)}}</p>
             </div>
-            {% include 'forms/form.html.twig' with {form: forms('course-registration'), course: page.folder} %}
+            {% include 'forms/form.html.twig' with {form: forms('course-registration'), course: course_id} %}
             {% endif %}
-
+            
             {# course dates #}
             <h2>Dates</h2>
             {% if sessions is empty %}
