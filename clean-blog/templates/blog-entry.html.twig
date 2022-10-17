@@ -1,7 +1,6 @@
 {% extends 'partials/base.html.twig' %}
-
-{# {% set dateformat = admin.page.dateformat ?: config.system.pages.dateformat.short ?: "F d, Y" %} #}
-{% set dateformat = 'DATEFORMAT.LONG'|t %}
+{% set dateformat = admin.page.dateformat ?: config.system.pages.dateformat.short ?: "F d, Y" %}
+{# {% set dateformat = 'DATEFORMAT.LONG'|t %} #}
 
 {% block header %}
 {% if page.header.header_image %}
