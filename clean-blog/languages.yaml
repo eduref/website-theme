@@ -67,8 +67,8 @@ en:
             SESSIONS_FROM: sessions from
             LATER: Dates will be announced later
     DATEFORMAT:
-        SHORT: 'jS M Y'
-        LONG: 'jS \of F Y'
+        SHORT: 'Y'
+        LONG: 'F Y'
 de:
     THEME_CLEAN_BLOG:
         ADMIN:
@@ -118,5 +118,5 @@ de:
             SESSIONS_FROM: Sitzungen vom
             LATER: Termine werden später bekannt gegeben
     DATEFORMAT:
-        SHORT: 'd M Y'
-        LONG: 'd F Y'
+        SHORT: 'M Y'
+        LONG: 'F Y'
