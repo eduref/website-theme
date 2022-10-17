@@ -1,4 +1,5 @@
-{% set dateformat = 'DATEFORMAT.SHORT'|t %}
+{# {% set dateformat = 'DATEFORMAT.SHORT'|t %} #}
+{% set dateformat = admin.page.dateformat ?: config.system.pages.dateformat.short ?: "F d, Y" %}
 {% set sessions = page.collection({ items: '@self.children', 'order': {'by': 'date', 'dir': 'desc'}})|first.header.course.sessions %}
 {% if sessions is empty %}
 <span class="meta">Dates will be announced later</span>
