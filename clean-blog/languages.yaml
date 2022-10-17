@@ -118,5 +118,5 @@ de:
             SESSIONS_FROM: Sitzungen vom
             LATER: Termine werden später bekannt gegeben
     DATEFORMAT:
-        SHORT: 'd. M Y'
-        LONG: 'd. F Y'
+        SHORT: 'd M Y'
+        LONG: 'd F Y'
