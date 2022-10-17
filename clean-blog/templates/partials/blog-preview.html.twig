@@ -1,4 +1,5 @@
-{% set dateformat = 'DATEFORMAT.LONG'|t %}
+{# {% set dateformat = 'DATEFORMAT.LONG'|t %} #}
+{% set dateformat = admin.page.dateformat ?: config.system.pages.dateformat.short ?: "F d, Y" %}
 <div class="preview">
     <a href="{{ post.url }}">
         <h2 class="title">{{ post.title }}</h2>
